@@ -1,0 +1,14 @@
+import { combineReducers } from 'redux';
+
+import { navigationReducer } from '../AppNavigation'
+
+import segmentCoinReducer from './SegmentCoinReducer'
+import segmentICOReducer from './SegmentICOReducer'
+import marketcapReducer from './MarketCapReducer'
+
+export default combineReducers({
+    nav: navigationReducer,
+    coinIndex: segmentCoinReducer,
+    icoIndex: segmentICOReducer,
+    marketCap: marketcapReducer
+})
