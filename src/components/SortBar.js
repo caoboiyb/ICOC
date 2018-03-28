@@ -13,11 +13,11 @@ class SortBar extends PureComponent {
         return (
             <View style={styles.container}>
                 <TouchableOpacity onPress={() => this.setState({sortColumn: 1})}>
-                    <Text style={[styles.text, this.state.sortColumn === 1 && styles.selectedText]}>#</Text>
+                    <Text style={[styles.text, this.state.sortColumn === 1 && styles.selectedText, {paddingHorizontal: 10}]}>#</Text>
                 </TouchableOpacity>
                 <View style={{flex: 1}}>
                     <TouchableOpacity onPress={() => this.setState({sortColumn: 2})}>
-                        <Text style={[styles.text, this.state.sortColumn === 2 && styles.selectedText, {paddingHorizontal: 20}]}>Name</Text>
+                        <Text style={[styles.text, this.state.sortColumn === 2 && styles.selectedText, {paddingLeft: 10}]}>Name</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={{flexDirection: 'row'}}>
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         color: "#ffffff",
         fontSize: 14,
         fontWeight: '500',
-        paddingHorizontal: 10
+        paddingHorizontal: 30
     },
     selectedText: {
         color: "#63D39E"

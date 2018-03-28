@@ -20,7 +20,11 @@ import thunk from 'redux-thunk'
 import { AppNavigation } from './AppNavigation'
 import {
   marketcapRequestAction,
-  coinRequestAction
+  coinRequestAction,
+  allRequestAction,
+  liveRequestAction,
+  upcomingRequestAction,
+  finishedRequestAction
 } from './actions'
 
 class App extends PureComponent {
@@ -36,6 +40,10 @@ class App extends PureComponent {
     }, () => {
       this.state.store.dispatch(marketcapRequestAction());
       this.state.store.dispatch(coinRequestAction());
+      this.state.store.dispatch(allRequestAction());
+      this.state.store.dispatch(liveRequestAction());
+      this.state.store.dispatch(upcomingRequestAction());
+      this.state.store.dispatch(finishedRequestAction());
     });
   }
 

@@ -25,7 +25,7 @@ class HeaderCoin extends PureComponent {
     }
 
     _onChangeSearch = text => {
-        console.log(text)
+        this.props.onSearch(text)
     }
 
     _onSearchButtonPressed = () => {
