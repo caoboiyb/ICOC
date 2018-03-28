@@ -8,9 +8,11 @@ import {
 import Header from '../components/Header'
 import MarketCap from '../components/MarketCap'
 import ToggleTime from '../components/ToggleTime'
+import SortBar from '../components/SortBar';
 
 import { connect } from 'react-redux'
 import { createChangeSegmentCoinAction, marketcapRequestAction } from '../actions'
+
 
 class CoinScreen extends PureComponent {
     state = {}
@@ -34,6 +36,7 @@ class CoinScreen extends PureComponent {
                 />
                 <MarketCap marketCap={this.props.marketCap} />
                 <ToggleTime />
+                <SortBar />
                 <View style={styles.content}>
                     <Text>ABC</Text>
                 </View>

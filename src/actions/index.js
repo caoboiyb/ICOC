@@ -3,7 +3,10 @@ import {
     CHANGE_SEGMENT_ICO_INDEX,
     MARKETCAP_REQUEST_ERROR,
     MARKETCAP_REQUEST_LOADING,
-    MARKETCAP_REQUEST_SUCCESS
+    MARKETCAP_REQUEST_SUCCESS,
+    COIN_REQUEST_ERROR,
+    COIN_REQUEST_LOADING,
+    COIN_REQUEST_SUCCESS
 } from './types'
 
 export const createChangeSegmentCoinAction = newIndex => ({
@@ -43,5 +46,34 @@ export const marketcapRequestAction = () => async dispatch => {
     catch (err) {
         console.log(err);
         dispatch(marketcapErrorAction(err));
+    }
+}
+
+//CoinList API Request
+const coinLoadingAction = () => ({
+    type: COIN_REQUEST_LOADING
+})
+
+const coinSuccessAction = (data) => ({
+    type: COIN_REQUEST_SUCCESS,
+    payload: data
+})
+
+const coinErrorAction = (err) => ({
+    type: COIN_REQUEST_ERROR,
+    payload: err
+})
+
+export const coinRequestAction = () => async dispatch => {
+    dispatch(coinLoadingAction());
+    try {
+        const response = await fetch('https://api.coinmarketcap.com/v1/ticker/')
+        const data = await response.json()
+        console.log(data)
+        dispatch(coinSuccessAction(data))
+    }
+    catch (err) {
+        console.log(err)
+        dispatch(coinErrorAction(err))
     }
 }

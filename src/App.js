@@ -18,7 +18,10 @@ import reducers from './reducers'
 import thunk from 'redux-thunk'
 
 import { AppNavigation } from './AppNavigation'
-import { marketcapRequestAction } from './actions'
+import {
+  marketcapRequestAction,
+  coinRequestAction
+} from './actions'
 
 class App extends PureComponent {
   state = { isLoading: true }
@@ -30,7 +33,10 @@ class App extends PureComponent {
         reducers,
         applyMiddleware(thunk)
       )
-    }, () => this.state.store.dispatch(marketcapRequestAction()));
+    }, () => {
+      this.state.store.dispatch(marketcapRequestAction());
+      this.state.store.dispatch(coinRequestAction());
+    });
   }
 
   render() {
@@ -38,7 +44,7 @@ class App extends PureComponent {
       this.state.isLoading ?
         <Text>...Loading</Text>
         : (<Provider store={this.state.store}>
-          <View style={{flex: 1}}>
+          <View style={{ flex: 1 }}>
             <StatusBar
               barStyle="light-content"
             />
