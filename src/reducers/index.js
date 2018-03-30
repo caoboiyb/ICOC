@@ -8,6 +8,7 @@ import marketcapReducer from './MarketCapReducer'
 import listCoinReducer from './ListCoinReducer'
 import allCoinReducer from './AllCoinReducer'
 import liveICOReducer from './LiveICOReducer'
+import upcomingICOReducer from './UpcomingICOReducer'
 import finishedICOReducer from './FinishedICOReducer'
 
 export default combineReducers({
@@ -18,5 +19,6 @@ export default combineReducers({
     listCoin: listCoinReducer,
     allCoin: allCoinReducer,
     liveICO: liveICOReducer,
+    upcomingICO: upcomingICOReducer,
     finishICO: finishedICOReducer
 })

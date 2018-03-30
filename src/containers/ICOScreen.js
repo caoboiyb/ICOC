@@ -3,21 +3,56 @@ import {
     StyleSheet,
     Text,
     View,
-    Button
+    Button,
+    Image
 } from 'react-native';
 import Header from '../components/Header'
+import ICOList from '../components/ICOList';
+
 import { connect } from 'react-redux'
 import { createChangeSegmentICOAction } from '../actions'
 
+
+
 class ICOScreen extends PureComponent {
-    state = {}
+    state = {
+        data: [],
+        index: 0
+    }
 
     componentDidMount() {
-        console.log("ICOindex: " + this.props.segmentIndex)
+        this.setState({
+            data: this.props.liveICO
+        })
     }
 
     _onICOSegmentChange = index => {
         this.props.changeICOSegmentIndex(index)
+        switch (index) {
+            case 0:
+                this.setState({
+                    data: this.props.liveICO,
+                    index: index
+                })
+                break;
+            case 1:
+                this.setState({
+                    data: this.props.upcomingICO,
+                    index: index
+                })
+                break;
+            case 2:
+                this.setState({
+                    data: this.props.finishICO,
+                    index: index
+                })
+                break;
+            default:
+                this.setState({
+                    data: this.props.liveICO,
+                    index: index
+                })
+        }
     }
 
     render() {
@@ -29,8 +64,8 @@ class ICOScreen extends PureComponent {
                     selectedIndex={this.props.segmentIndex}
                     onSegmentChange={this._onICOSegmentChange}
                 />
-                <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#242233" }}>
-                    <Text>ICO Screen</Text>
+                <View style={{ flex: 1, backgroundColor: "#E3E3E3" }}>
+                    <ICOList data={this.state.data} index={this.state.index}/>
                 </View>
             </View>
         );
@@ -38,7 +73,10 @@ class ICOScreen extends PureComponent {
 }
 
 const mapAppStateToProps = state => ({
-    segmentIndex: state.icoIndex
+    segmentIndex: state.icoIndex,
+    liveICO: state.liveICO,
+    upcomingICO: state.upcomingICO,
+    finishICO: state.finishICO
 })
 
 const mapDispatchToProps = dispatch => ({
