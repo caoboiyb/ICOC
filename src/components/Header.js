@@ -21,7 +21,7 @@ class HeaderCoin extends PureComponent {
     _onCancelPress = () => {
         this.setState({
             isSearching: false
-        })
+        },() => this.props.onSearch(""))
     }
 
     _onChangeSearch = text => {

@@ -75642,6 +75642,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             }, _this._onCancelPress = function () {
                 _this.setState({
                     isSearching: false
+                }, function () {
+                    return _this.props.onSearch("");
                 });
             }, _this._onChangeSearch = function (text) {
                 _this.props.onSearch(text);
@@ -75839,6 +75841,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             placeholderTextColor: "#E3E3E3",
                             onChangeText: this._onChangeSearchInput,
                             autoCorrect: false,
+                            autoFocus: true,
                             __source: {
                                 fileName: _jsxFileName,
                                 lineNumber: 25
@@ -75846,11 +75849,12 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         })
                     ),
                     _react3.default.createElement(_reactNative.Button, {
+                        color: "#FFFFFF",
                         title: "Cancel",
                         onPress: this._onCancel,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 32
+                            lineNumber: 33
                         }
                     })
                 );
