@@ -27,6 +27,8 @@ class CoinList extends PureComponent {
                 data={this.props.data}
                 keyExtractor={this._keyExtractor}
                 renderItem={this._renderItem}
+                refreshing={this.props.refreshing}
+                onRefresh={this.props.onRefresh}
             />
         );
     }

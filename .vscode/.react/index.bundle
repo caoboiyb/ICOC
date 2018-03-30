@@ -75279,16 +75279,32 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             }
 
             return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = CoinScreen.__proto__ || Object.getPrototypeOf(CoinScreen)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+                data: [],
                 displayData: [],
-                changeTimeIndex: 1
+                changeTimeIndex: 1,
+                refreshing: false
             }, _this._onCoinSegmentChange = function (index) {
                 _this.props.changeCoinSegmentIndex(index);
             }, _this._onSearch = function (text) {
-                console.log(text);
+                var searchData = _this.state.data.filter(function (item) {
+                    return item.name.toLowerCase().includes(text.toLowerCase()) || item.symbol.toLowerCase().includes(text.toLowerCase());
+                });
+
+                _this.setState({
+                    displayData: searchData
+                });
             }, _this._onChangeTimeIndex = function (index) {
                 _this.setState({
                     changeTimeIndex: index
                 });
+            }, _this._onRefresh = function () {
+                _this.setState({
+                    refreshing: true
+                });
+
+                _this.props.updateAllCoin();
+
+                _this.props.updateTopCoin();
             }, _temp), _possibleConstructorReturn(_this, _ret);
         }
 
@@ -75298,11 +75314,15 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 if (nextProps.listCoin.length !== 0) {
                     if (nextProps.segmentIndex === 0) {
                         this.setState({
-                            displayData: nextProps.listCoin
+                            data: nextProps.listCoin,
+                            displayData: nextProps.listCoin,
+                            refreshing: false
                         });
                     } else if (nextProps.segmentIndex === 1) {
                         this.setState({
-                            displayData: nextProps.allCoin
+                            data: nextProps.allCoin,
+                            displayData: nextProps.allCoin,
+                            refreshing: false
                         });
                     }
                 }
@@ -75318,7 +75338,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         },
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 57
+                            lineNumber: 81
                         }
                     },
                     _react3.default.createElement(_Header2.default, {
@@ -75330,14 +75350,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         onSearch: this._onSearch,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 58
+                            lineNumber: 82
                         }
                     }),
                     _react3.default.createElement(_MarketCap2.default, {
                         marketCap: this.props.marketCap,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 66
+                            lineNumber: 90
                         }
                     }),
                     _react3.default.createElement(_ToggleTime2.default, {
@@ -75345,13 +75365,13 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         onChangeTimeIndex: this._onChangeTimeIndex,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 67
+                            lineNumber: 91
                         }
                     }),
                     _react3.default.createElement(_SortBar2.default, {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 71
+                            lineNumber: 95
                         }
                     }),
                     _react3.default.createElement(
@@ -75360,15 +75380,17 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             style: styles.content,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 72
+                                lineNumber: 96
                             }
                         },
                         _react3.default.createElement(_CoinList2.default, {
                             data: this.state.displayData,
                             selectedTime: this.state.changeTimeIndex,
+                            onRefresh: this._onRefresh,
+                            refreshing: this.state.refreshing,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 73
+                                lineNumber: 97
                             }
                         })
                     )
@@ -75399,6 +75421,12 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         return {
             changeCoinSegmentIndex: function changeCoinSegmentIndex(index) {
                 return dispatch((0, _actions.createChangeSegmentCoinAction)(index));
+            },
+            updateTopCoin: function updateTopCoin() {
+                return dispatch((0, _actions.coinRequestAction)());
+            },
+            updateAllCoin: function updateAllCoin() {
+                return dispatch((0, _actions.allRequestAction)());
             }
         };
     };
@@ -75674,6 +75702,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             placeholder: "Find a currency...",
                             placeholderTextColor: "#E3E3E3",
                             onChangeText: this._onChangeSearchInput,
+                            autoCorrect: false,
                             __source: {
                                 fileName: _jsxFileName,
                                 lineNumber: 25
@@ -75685,7 +75714,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         onPress: this._onCancel,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 31
+                            lineNumber: 32
                         }
                     })
                 );
@@ -78886,6 +78915,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     data: this.props.data,
                     keyExtractor: this._keyExtractor,
                     renderItem: this._renderItem,
+                    refreshing: this.props.refreshing,
+                    onRefresh: this.props.onRefresh,
                     __source: {
                         fileName: _jsxFileName,
                         lineNumber: 25

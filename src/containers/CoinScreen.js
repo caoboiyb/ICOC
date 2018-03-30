@@ -14,25 +14,35 @@ import CoinItem from '../components/CoinItem';
 import CoinList from '../components/CoinList';
 
 import { connect } from 'react-redux'
-import { createChangeSegmentCoinAction, marketcapRequestAction } from '../actions'
+import { 
+    createChangeSegmentCoinAction,
+    coinRequestAction,
+    allRequestAction
+ } from '../actions'
 
 
 
 class CoinScreen extends PureComponent {
     state = { 
+        data: [],
         displayData: [],
-        changeTimeIndex: 1 
+        changeTimeIndex: 1,
+        refreshing: false
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.listCoin.length !== 0) {
             if (nextProps.segmentIndex === 0) {
                 this.setState({
-                    displayData: nextProps.listCoin
+                    data: nextProps.listCoin,
+                    displayData: nextProps.listCoin,
+                    refreshing: false
                 })
             } else if (nextProps.segmentIndex === 1) {
                 this.setState({
-                    displayData: nextProps.allCoin
+                    data: nextProps.allCoin,
+                    displayData: nextProps.allCoin,
+                    refreshing: false
                 })
             }
         }
@@ -43,13 +53,27 @@ class CoinScreen extends PureComponent {
     }
 
     _onSearch = text => {
-        console.log(text)
+        var searchData = this.state.data.filter(item => {
+            return item.name.toLowerCase().includes(text.toLowerCase()) 
+                || item.symbol.toLowerCase().includes(text.toLowerCase())
+        })
+        this.setState({
+            displayData: searchData
+        })
     }
 
     _onChangeTimeIndex = index => {
         this.setState({
             changeTimeIndex: index
         })
+    }
+
+    _onRefresh = () => {
+        this.setState({
+            refreshing: true
+        })
+        this.props.updateAllCoin()
+        this.props.updateTopCoin()
     }
 
     render() {
@@ -73,6 +97,8 @@ class CoinScreen extends PureComponent {
                     <CoinList 
                         data={this.state.displayData}
                         selectedTime={this.state.changeTimeIndex}
+                        onRefresh={this._onRefresh}
+                        refreshing={this.state.refreshing}
                     />
                 </View>
             </View>
@@ -97,7 +123,9 @@ const mapAppStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    changeCoinSegmentIndex: index => dispatch(createChangeSegmentCoinAction(index))
+    changeCoinSegmentIndex: index => dispatch(createChangeSegmentCoinAction(index)),
+    updateTopCoin: () => dispatch(coinRequestAction()),
+    updateAllCoin: () => dispatch(allRequestAction())
 })
 
 export default connect(mapAppStateToProps, mapDispatchToProps)(CoinScreen);  

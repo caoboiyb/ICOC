@@ -26,7 +26,8 @@ class SearchBar extends PureComponent {
                         style={styles.textInputStyle} 
                         placeholder="Find a currency..." 
                         placeholderTextColor="#E3E3E3"
-                        onChangeText={this._onChangeSearchInput} />
+                        onChangeText={this._onChangeSearchInput}
+                        autoCorrect={false} />
                 </View>
                 <Button title="Cancel" onPress={this._onCancel} />
             </View>
