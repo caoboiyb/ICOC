@@ -14,35 +14,37 @@ import CoinItem from '../components/CoinItem';
 import CoinList from '../components/CoinList';
 
 import { connect } from 'react-redux'
-import { 
+import {
     createChangeSegmentCoinAction,
     coinRequestAction,
     allRequestAction
- } from '../actions'
+} from '../actions'
 
 
 
 class CoinScreen extends PureComponent {
-    state = { 
+    state = {
         data: [],
         displayData: [],
         changeTimeIndex: 1,
-        refreshing: false
+        refreshing: false,
+        sortColumn: 0
+    }
+
+    componentDidMount() {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.listCoin.length !== 0) {
+        if (nextProps.listCoin !== this.state.data) {
             if (nextProps.segmentIndex === 0) {
                 this.setState({
                     data: nextProps.listCoin,
-                    displayData: nextProps.listCoin,
-                    refreshing: false
+                    displayData: nextProps.listCoin
                 })
             } else if (nextProps.segmentIndex === 1) {
                 this.setState({
                     data: nextProps.allCoin,
-                    displayData: nextProps.allCoin,
-                    refreshing: false
+                    displayData: nextProps.allCoin
                 })
             }
         }
@@ -54,7 +56,7 @@ class CoinScreen extends PureComponent {
 
     _onSearch = text => {
         var searchData = this.state.data.filter(item => {
-            return item.name.toLowerCase().includes(text.toLowerCase()) 
+            return item.name.toLowerCase().includes(text.toLowerCase())
                 || item.symbol.toLowerCase().includes(text.toLowerCase())
         })
         this.setState({
@@ -71,9 +73,129 @@ class CoinScreen extends PureComponent {
     _onRefresh = () => {
         this.setState({
             refreshing: true
+        },() => {
+            this.props.updateAllCoin()
+            this.props.updateTopCoin()
+            this.setState({
+                refreshing: false
+            })
         })
-        this.props.updateAllCoin()
-        this.props.updateTopCoin()
+    }
+
+    _onSort = index => {
+        if (this.state.sortColumn === index) {
+            this.setState({
+                sortColumn: -index,
+                refreshing: true
+            }, () => this.updateSortedData())
+        } else {
+            this.setState({
+                sortColumn: index,
+                refreshing: true
+            }, () => this.updateSortedData())
+        }
+    }
+
+    sort = indexCol => {
+        switch (indexCol) {
+            case 1:
+                return this.sortByRankASC()
+            case -1:
+                return this.sortByRankDES()
+            case 2:
+                return this.sortByNameASC()
+            case -2:
+                return this.sortByNameDES()
+            case 3:
+                return this.sortByPriceASC()
+            case -3:
+                return this.sortByPriceDES()
+            case 4:
+                return this.sortByPercentASC()
+            case -4:
+                return this.sortByPercentDES()
+        }
+    }
+
+    sortByRankASC = () => this.state.displayData.sort((a, b) => {
+        return parseInt(a.rank) - parseInt(b.rank)
+    })
+
+    sortByRankDES = () => this.state.displayData.sort((a, b) => {
+        return parseInt(b.rank) - parseInt(a.rank)
+    })
+
+    sortByNameASC = () => this.state.displayData.sort((a, b) => {
+        const nameA = a.name.toLowerCase()
+        const nameB = b.name.toLowerCase()
+
+        return nameA < nameB ? -1 : 1
+    })
+
+    sortByNameDES = () => this.state.displayData.sort((a, b) => {
+        const nameA = a.name.toLowerCase()
+        const nameB = b.name.toLowerCase()
+
+        return nameA < nameB ? 1 : -1
+    })
+
+    sortByPriceASC = () => this.state.displayData.sort((a, b) => {
+        return parseFloat(a.price_usd) - parseFloat(b.price_usd)
+    })
+
+    sortByPriceDES = () => this.state.displayData.sort((a, b) => {
+        return parseFloat(b.price_usd) - parseFloat(a.price_usd)
+    })
+
+    sortByPercentASC = () => {
+        switch (this.props.segmentIndex) {
+            case 0:
+                return this.state.displayData.sort((a, b) => {
+                    return parseFloat(a.percent_change_1h) - parseFloat(b.percent_change_1h)
+                })
+            case 1:
+                return this.state.displayData.sort((a, b) => {
+                    return parseFloat(a.percent_change_24h) - parseFloat(b.percent_change_24h)
+                })
+            case 2:
+                return this.state.displayData.sort((a, b) => {
+                    return parseFloat(a.percent_change_7d) - parseFloat(b.percent_change_7d)
+                })
+            default:
+                return this.state.displayData.sort((a, b) => {
+                    return parseFloat(a.percent_change_1h) - parseFloat(b.percent_change_1h)
+                })
+        }
+    }
+
+    sortByPercentDES = () => {
+        switch (this.props.segmentIndex) {
+            case 1:
+                return this.state.displayData.sort((a, b) => {
+                    return parseFloat(b.percent_change_1h) - parseFloat(a.percent_change_1h)
+                })
+            case 2:
+                return this.state.displayData.sort((a, b) => {
+                    return parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h)
+                })
+            case 3:
+                return this.state.displayData.sort((a, b) => {
+                    return parseFloat(b.percent_change_7d) - parseFloat(a.percent_change_7d)
+                })
+            default:
+                return this.state.displayData.sort((a, b) => {
+                    return parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h)
+                })
+        }
+    }
+
+    updateSortedData = () => {
+        const sortedData = this.sort(this.state.sortColumn)
+        console.log(sortedData)
+        this.setState({
+            displayData: sortedData,
+            refreshing: false
+        })
     }
 
     render() {
@@ -88,13 +210,16 @@ class CoinScreen extends PureComponent {
                     onSearch={this._onSearch}
                 />
                 <MarketCap marketCap={this.props.marketCap} />
-                <ToggleTime 
+                <ToggleTime
                     selectedTime={this.state.changeTimeIndex}
-                    onChangeTimeIndex={this._onChangeTimeIndex}    
+                    onChangeTimeIndex={this._onChangeTimeIndex}
                 />
-                <SortBar />
+                <SortBar
+                    sortedColumn={this.state.sortColumn}
+                    onSort={this._onSort}
+                />
                 <View style={styles.content}>
-                    <CoinList 
+                    <CoinList
                         data={this.state.displayData}
                         selectedTime={this.state.changeTimeIndex}
                         onRefresh={this._onRefresh}

@@ -75282,7 +75282,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 data: [],
                 displayData: [],
                 changeTimeIndex: 1,
-                refreshing: false
+                refreshing: false,
+                sortColumn: 0
             }, _this._onCoinSegmentChange = function (index) {
                 _this.props.changeCoinSegmentIndex(index);
             }, _this._onSearch = function (text) {
@@ -75300,29 +75301,157 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             }, _this._onRefresh = function () {
                 _this.setState({
                     refreshing: true
+                }, function () {
+                    _this.props.updateAllCoin();
+
+                    _this.props.updateTopCoin();
+
+                    _this.setState({
+                        refreshing: false
+                    });
                 });
+            }, _this._onSort = function (index) {
+                if (_this.state.sortColumn === index) {
+                    _this.setState({
+                        sortColumn: -index,
+                        refreshing: true
+                    }, function () {
+                        return _this.updateSortedData();
+                    });
+                } else {
+                    _this.setState({
+                        sortColumn: index,
+                        refreshing: true
+                    }, function () {
+                        return _this.updateSortedData();
+                    });
+                }
+            }, _this.sort = function (indexCol) {
+                switch (indexCol) {
+                    case 1:
+                        return _this.sortByRankASC();
 
-                _this.props.updateAllCoin();
+                    case -1:
+                        return _this.sortByRankDES();
 
-                _this.props.updateTopCoin();
+                    case 2:
+                        return _this.sortByNameASC();
+
+                    case -2:
+                        return _this.sortByNameDES();
+
+                    case 3:
+                        return _this.sortByPriceASC();
+
+                    case -3:
+                        return _this.sortByPriceDES();
+
+                    case 4:
+                        return _this.sortByPercentASC();
+
+                    case -4:
+                        return _this.sortByPercentDES();
+                }
+            }, _this.sortByRankASC = function () {
+                return _this.state.displayData.sort(function (a, b) {
+                    return parseInt(a.rank) - parseInt(b.rank);
+                });
+            }, _this.sortByRankDES = function () {
+                return _this.state.displayData.sort(function (a, b) {
+                    return parseInt(b.rank) - parseInt(a.rank);
+                });
+            }, _this.sortByNameASC = function () {
+                return _this.state.displayData.sort(function (a, b) {
+                    var nameA = a.name.toLowerCase();
+                    var nameB = b.name.toLowerCase();
+                    return nameA < nameB ? -1 : 1;
+                });
+            }, _this.sortByNameDES = function () {
+                return _this.state.displayData.sort(function (a, b) {
+                    var nameA = a.name.toLowerCase();
+                    var nameB = b.name.toLowerCase();
+                    return nameA < nameB ? 1 : -1;
+                });
+            }, _this.sortByPriceASC = function () {
+                return _this.state.displayData.sort(function (a, b) {
+                    return parseFloat(a.price_usd) - parseFloat(b.price_usd);
+                });
+            }, _this.sortByPriceDES = function () {
+                return _this.state.displayData.sort(function (a, b) {
+                    return parseFloat(b.price_usd) - parseFloat(a.price_usd);
+                });
+            }, _this.sortByPercentASC = function () {
+                switch (_this.props.segmentIndex) {
+                    case 0:
+                        return _this.state.displayData.sort(function (a, b) {
+                            return parseFloat(a.percent_change_1h) - parseFloat(b.percent_change_1h);
+                        });
+
+                    case 1:
+                        return _this.state.displayData.sort(function (a, b) {
+                            return parseFloat(a.percent_change_24h) - parseFloat(b.percent_change_24h);
+                        });
+
+                    case 2:
+                        return _this.state.displayData.sort(function (a, b) {
+                            return parseFloat(a.percent_change_7d) - parseFloat(b.percent_change_7d);
+                        });
+
+                    default:
+                        return _this.state.displayData.sort(function (a, b) {
+                            return parseFloat(a.percent_change_1h) - parseFloat(b.percent_change_1h);
+                        });
+                }
+            }, _this.sortByPercentDES = function () {
+                switch (_this.props.segmentIndex) {
+                    case 1:
+                        return _this.state.displayData.sort(function (a, b) {
+                            return parseFloat(b.percent_change_1h) - parseFloat(a.percent_change_1h);
+                        });
+
+                    case 2:
+                        return _this.state.displayData.sort(function (a, b) {
+                            return parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h);
+                        });
+
+                    case 3:
+                        return _this.state.displayData.sort(function (a, b) {
+                            return parseFloat(b.percent_change_7d) - parseFloat(a.percent_change_7d);
+                        });
+
+                    default:
+                        return _this.state.displayData.sort(function (a, b) {
+                            return parseFloat(b.percent_change_24h) - parseFloat(a.percent_change_24h);
+                        });
+                }
+            }, _this.updateSortedData = function () {
+                var sortedData = _this.sort(_this.state.sortColumn);
+
+                console.log(sortedData);
+
+                _this.setState({
+                    displayData: sortedData,
+                    refreshing: false
+                });
             }, _temp), _possibleConstructorReturn(_this, _ret);
         }
 
         _createClass(CoinScreen, [{
+            key: "componentDidMount",
+            value: function componentDidMount() {}
+        }, {
             key: "componentWillReceiveProps",
             value: function componentWillReceiveProps(nextProps) {
-                if (nextProps.listCoin.length !== 0) {
+                if (nextProps.listCoin !== this.state.data) {
                     if (nextProps.segmentIndex === 0) {
                         this.setState({
                             data: nextProps.listCoin,
-                            displayData: nextProps.listCoin,
-                            refreshing: false
+                            displayData: nextProps.listCoin
                         });
                     } else if (nextProps.segmentIndex === 1) {
                         this.setState({
                             data: nextProps.allCoin,
-                            displayData: nextProps.allCoin,
-                            refreshing: false
+                            displayData: nextProps.allCoin
                         });
                     }
                 }
@@ -75338,7 +75467,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         },
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 81
+                            lineNumber: 203
                         }
                     },
                     _react3.default.createElement(_Header2.default, {
@@ -75350,14 +75479,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         onSearch: this._onSearch,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 82
+                            lineNumber: 204
                         }
                     }),
                     _react3.default.createElement(_MarketCap2.default, {
                         marketCap: this.props.marketCap,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 90
+                            lineNumber: 212
                         }
                     }),
                     _react3.default.createElement(_ToggleTime2.default, {
@@ -75365,13 +75494,15 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         onChangeTimeIndex: this._onChangeTimeIndex,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 91
+                            lineNumber: 213
                         }
                     }),
                     _react3.default.createElement(_SortBar2.default, {
+                        sortedColumn: this.state.sortColumn,
+                        onSort: this._onSort,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 95
+                            lineNumber: 217
                         }
                     }),
                     _react3.default.createElement(
@@ -75380,7 +75511,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             style: styles.content,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 96
+                                lineNumber: 221
                             }
                         },
                         _react3.default.createElement(_CoinList2.default, {
@@ -75390,7 +75521,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             refreshing: this.state.refreshing,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 97
+                                lineNumber: 222
                             }
                         })
                     )
@@ -78300,9 +78431,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 args[_key] = arguments[_key];
             }
 
-            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SortBar.__proto__ || Object.getPrototypeOf(SortBar)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-                sortColumn: 0
-            }, _temp), _possibleConstructorReturn(_this, _ret);
+            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SortBar.__proto__ || Object.getPrototypeOf(SortBar)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _temp), _possibleConstructorReturn(_this, _ret);
         }
 
         _createClass(SortBar, [{
@@ -78323,9 +78452,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         _reactNative.TouchableOpacity,
                         {
                             onPress: function onPress() {
-                                return _this2.setState({
-                                    sortColumn: 1
-                                });
+                                return _this2.props.onSort(1);
                             },
                             __source: {
                                 fileName: _jsxFileName,
@@ -78335,7 +78462,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         _react3.default.createElement(
                             _reactNative.Text,
                             {
-                                style: [styles.text, this.state.sortColumn === 1 && styles.selectedText, {
+                                style: [styles.text, (this.props.sortedColumn === 1 || this.props.sortedColumn === -1) && styles.selectedText, {
                                     paddingHorizontal: 10
                                 }],
                                 __source: {
@@ -78354,31 +78481,29 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 18
+                                lineNumber: 22
                             }
                         },
                         _react3.default.createElement(
                             _reactNative.TouchableOpacity,
                             {
                                 onPress: function onPress() {
-                                    return _this2.setState({
-                                        sortColumn: 2
-                                    });
+                                    return _this2.props.onSort(2);
                                 },
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 19
+                                    lineNumber: 23
                                 }
                             },
                             _react3.default.createElement(
                                 _reactNative.Text,
                                 {
-                                    style: [styles.text, this.state.sortColumn === 2 && styles.selectedText, {
+                                    style: [styles.text, (this.props.sortedColumn === 2 || this.props.sortedColumn === -2) && styles.selectedText, {
                                         paddingLeft: 10
                                     }],
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 20
+                                        lineNumber: 24
                                     }
                                 },
                                 "Name"
@@ -78393,29 +78518,27 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 23
+                                lineNumber: 31
                             }
                         },
                         _react3.default.createElement(
                             _reactNative.TouchableOpacity,
                             {
                                 onPress: function onPress() {
-                                    return _this2.setState({
-                                        sortColumn: 3
-                                    });
+                                    return _this2.props.onSort(3);
                                 },
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 24
+                                    lineNumber: 32
                                 }
                             },
                             _react3.default.createElement(
                                 _reactNative.Text,
                                 {
-                                    style: [styles.text, this.state.sortColumn === 3 && styles.selectedText],
+                                    style: [styles.text, (this.props.sortedColumn === 3 || this.props.sortedColumn === -3) && styles.selectedText],
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 25
+                                        lineNumber: 33
                                     }
                                 },
                                 "Price"
@@ -78429,7 +78552,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 }],
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 27
+                                    lineNumber: 38
                                 }
                             },
                             "/"
@@ -78438,22 +78561,20 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             _reactNative.TouchableOpacity,
                             {
                                 onPress: function onPress() {
-                                    return _this2.setState({
-                                        sortColumn: 4
-                                    });
+                                    return _this2.props.onSort(4);
                                 },
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 28
+                                    lineNumber: 39
                                 }
                             },
                             _react3.default.createElement(
                                 _reactNative.Text,
                                 {
-                                    style: [styles.text, this.state.sortColumn === 4 && styles.selectedText],
+                                    style: [styles.text, (this.props.sortedColumn === 4 || this.props.sortedColumn === -4) && styles.selectedText],
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 29
+                                        lineNumber: 40
                                     }
                                 },
                                 " % "

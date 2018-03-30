@@ -8,25 +8,39 @@ import {
 } from 'react-native';
 
 class SortBar extends PureComponent {
-    state = { sortColumn: 0 }
+    state = {}
     render() {
         return (
             <View style={styles.container}>
-                <TouchableOpacity onPress={() => this.setState({sortColumn: 1})}>
-                    <Text style={[styles.text, this.state.sortColumn === 1 && styles.selectedText, {paddingHorizontal: 10}]}>#</Text>
+                <TouchableOpacity onPress={() => this.props.onSort(1)}>
+                    <Text style={[
+                        styles.text,
+                        (this.props.sortedColumn === 1 || this.props.sortedColumn === -1) && styles.selectedText,
+                        { paddingHorizontal: 10 }]
+                    }>#</Text>
                 </TouchableOpacity>
-                <View style={{flex: 1}}>
-                    <TouchableOpacity onPress={() => this.setState({sortColumn: 2})}>
-                        <Text style={[styles.text, this.state.sortColumn === 2 && styles.selectedText, {paddingLeft: 10}]}>Name</Text>
+                <View style={{ flex: 1 }}>
+                    <TouchableOpacity onPress={() => this.props.onSort(2)}>
+                        <Text style={[
+                            styles.text,
+                            (this.props.sortedColumn === 2 || this.props.sortedColumn === -2) && styles.selectedText,
+                            { paddingLeft: 10 }]
+                        }>Name</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={{flexDirection: 'row'}}>
-                    <TouchableOpacity onPress={() => this.setState({sortColumn: 3})}>
-                        <Text style={[styles.text, this.state.sortColumn === 3 && styles.selectedText]}>Price</Text>
+                <View style={{ flexDirection: 'row' }}>
+                    <TouchableOpacity onPress={() => this.props.onSort(3)}>
+                        <Text style={[
+                            styles.text, 
+                            (this.props.sortedColumn === 3 || this.props.sortedColumn === -3) && styles.selectedText]
+                        }>Price</Text>
                     </TouchableOpacity>
-                    <Text style={[styles.text, {paddingHorizontal: 0}]}>/</Text>
-                    <TouchableOpacity onPress={() => this.setState({sortColumn: 4})}>
-                        <Text style={[styles.text, this.state.sortColumn === 4 && styles.selectedText]}> % </Text>
+                    <Text style={[styles.text, { paddingHorizontal: 0 }]}>/</Text>
+                    <TouchableOpacity onPress={() => this.props.onSort(4)}>
+                        <Text style={[
+                            styles.text, 
+                            (this.props.sortedColumn === 4 || this.props.sortedColumn === -4) && styles.selectedText]
+                        }> % </Text>
                     </TouchableOpacity>
                 </View>
             </View>

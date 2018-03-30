@@ -65,7 +65,10 @@ class ICOScreen extends PureComponent {
                     onSegmentChange={this._onICOSegmentChange}
                 />
                 <View style={{ flex: 1, backgroundColor: "#E3E3E3" }}>
-                    <ICOList data={this.state.data} index={this.state.index}/>
+                    <ICOList 
+                        data={this.state.data} 
+                        index={this.state.index}
+                    />
                 </View>
             </View>
         );
