@@ -14,7 +14,6 @@ import {
   createReduxBoundAddListener,
   createReactNavigationReduxMiddleware,
 } from 'react-navigation-redux-helpers';
-import SVGImage from 'react-native-svg-image';
 
 import CoinScreen from './containers/CoinScreen'
 import ICOScreen from './containers/ICOScreen'

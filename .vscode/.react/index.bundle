@@ -60635,7 +60635,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   }(_react2.PureComponent));
 
   exports.default = App;
-},493,[112,131,12,494,505,522,627,523,618],"src/App.js");
+},493,[112,131,12,494,505,522,632,523,620],"src/App.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
   'use strict';
 
@@ -62484,7 +62484,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         liveICO: _LiveICOReducer2.default,
         finishICO: _FinishedICOReducer2.default
     });
-},522,[505,523,623,624,625,626,631,632,633],"src/reducers/index.js");
+},522,[505,523,625,626,627,628,629,630,631],"src/reducers/index.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -62511,15 +62511,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
   var _reactNavigationReduxHelpers = _require(_dependencyMap[5], "react-navigation-redux-helpers");
 
-  var _reactNativeSvgImage = _require(_dependencyMap[6], "react-native-svg-image");
-
-  var _reactNativeSvgImage2 = _interopRequireDefault(_reactNativeSvgImage);
-
-  var _CoinScreen = _require(_dependencyMap[7], "./containers/CoinScreen");
+  var _CoinScreen = _require(_dependencyMap[6], "./containers/CoinScreen");
 
   var _CoinScreen2 = _interopRequireDefault(_CoinScreen);
 
-  var _ICOScreen = _require(_dependencyMap[8], "./containers/ICOScreen");
+  var _ICOScreen = _require(_dependencyMap[7], "./containers/ICOScreen");
 
   var _ICOScreen2 = _interopRequireDefault(_ICOScreen);
 
@@ -62569,7 +62565,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
           if (routeName === 'Coin') {
             return _react3.default.createElement(_reactNative.Image, {
-              source: _require(_dependencyMap[9], './images/ic_insert_chart_white_48pt.png'),
+              source: _require(_dependencyMap[8], './images/ic_insert_chart_white_48pt.png'),
               style: {
                 width: 30,
                 height: 30,
@@ -62577,12 +62573,12 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 37
+                lineNumber: 36
               }
             });
           } else if (routeName === 'ICO') {
             return _react3.default.createElement(_reactNative.Image, {
-              source: _require(_dependencyMap[10], './images/ic_alarm_white_48pt.png'),
+              source: _require(_dependencyMap[9], './images/ic_alarm_white_48pt.png'),
               style: {
                 width: 30,
                 height: 30,
@@ -62590,13 +62586,13 @@ __d(function (global, _require, module, exports, _dependencyMap) {
               },
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 43
+                lineNumber: 42
               }
             });
           }
 
           return _react3.default.createElement(_reactNative.Image, {
-            source: _require(_dependencyMap[9], './images/ic_insert_chart_white_48pt.png'),
+            source: _require(_dependencyMap[8], './images/ic_insert_chart_white_48pt.png'),
             style: {
               width: 30,
               height: 30,
@@ -62604,7 +62600,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 52
+              lineNumber: 51
             }
           });
         }
@@ -62662,7 +62658,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
           }),
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 91
+            lineNumber: 90
           }
         });
       }
@@ -62678,7 +62674,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   };
 
   var AppNavigation = exports.AppNavigation = (0, _reactRedux.connect)(mapAppStateToProps)(AppWithNavigation);
-},523,[112,131,12,494,524,600,604,605,620,621,622],"src/AppNavigation.js");
+},523,[112,131,12,494,524,600,604,622,623,624],"src/AppNavigation.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
   module.exports = {
     get createNavigationContainer() {
@@ -75190,150 +75186,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   exports.initAction = initAction;
 },603,[524],"node_modules/react-navigation-redux-helpers/src/reducer.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-
-  var _react2 = _require(_dependencyMap[0], "react");
-
-  var _react3 = _interopRequireDefault(_react2);
-
-  var _index = _require(_dependencyMap[1], "./../react-transform-hmr/lib/index.js");
-
-  var _index2 = _interopRequireDefault(_index);
-
-  var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-  var _class,
-      _temp2,
-      _jsxFileName = "/Users/ducnt/Documents/ICOC/node_modules/react-native-svg-image/index.js";
-
-  var _reactNative = _require(_dependencyMap[2], "react-native");
-
-  var _propTypes = _require(_dependencyMap[3], "prop-types");
-
-  var _propTypes2 = _interopRequireDefault(_propTypes);
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-  function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _components = {
-    SVGImage: {
-      displayName: "SVGImage"
-    }
-  };
-
-  var _reactTransformHmrLibIndexJs2 = (0, _index2.default)({
-    filename: "/Users/ducnt/Documents/ICOC/node_modules/react-native-svg-image/index.js",
-    components: _components,
-    locals: [module],
-    imports: [_react3.default]
-  });
-
-  function _wrapComponent(id) {
-    return function (Component) {
-      return _reactTransformHmrLibIndexJs2(Component, id);
-    };
-  }
-
-  var SVGImage = _wrapComponent("SVGImage")((_temp2 = _class = function (_PureComponent) {
-    _inherits(SVGImage, _PureComponent);
-
-    function SVGImage() {
-      var _ref;
-
-      var _temp, _this, _ret;
-
-      _classCallCheck(this, SVGImage);
-
-      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SVGImage.__proto__ || Object.getPrototypeOf(SVGImage)).call.apply(_ref, [this].concat(args))), _this), _this.renderLoader = function () {
-        return _react3.default.createElement(
-          _reactNative.View,
-          {
-            style: [_this.props.style, {
-              flex: 1,
-              alignItems: 'center',
-              justifyContent: 'center'
-            }],
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 23
-            }
-          },
-          _react3.default.createElement(_reactNative.ActivityIndicator, {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 24
-            }
-          })
-        );
-      }, _temp), _possibleConstructorReturn(_this, _ret);
-    }
-
-    _createClass(SVGImage, [{
-      key: "render",
-      value: function render() {
-        var _props = this.props,
-            showWebviewLoader = _props.showWebviewLoader,
-            uri = _props.source.uri,
-            style = _props.style,
-            restOfProps = _objectWithoutProperties(_props, ["showWebviewLoader", "source", "style"]);
-
-        var _StyleSheet$flatten = _reactNative.StyleSheet.flatten(style || []),
-            height = _StyleSheet$flatten.height,
-            width = _StyleSheet$flatten.width;
-
-        var html = "\n      <!DOCTYPE html>\n\n      <html>\n        <head>\n          <style type=\"text/css\">\n            img {\n              width: 100%;\n              height: 100%;\n              margin: 0 auto;\n            }\n            div {\n              width: " + (width ? width + 'px' : 'auto') + ";\n              height: " + (height ? height + 'px' : 'auto') + ";\n            }\n            body {\n              margin: 0;\n            }\n          </style>\n        </head>\n        <body>\n          <div>\n            <img src=\"" + uri + "\" align=\"middle\" />\n          </div>\n        </body>\n      </html>\n    ";
-        return _react3.default.createElement(_reactNative.WebView, _extends({
-          startInLoadingState: showWebviewLoader,
-          renderLoading: showWebviewLoader ? this.renderLoader : null,
-          scalesPageToFit: false,
-          style: style
-        }, restOfProps, {
-          source: {
-            html: html
-          },
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 60
-          }
-        }));
-      }
-    }]);
-
-    return SVGImage;
-  }(_react2.PureComponent), _class.propTypes = {
-    style: _propTypes2.default.any,
-    source: _propTypes2.default.shape({
-      uri: _propTypes2.default.string
-    }).isRequired,
-    showWebviewLoader: _propTypes2.default.bool,
-    height: _propTypes2.default.number
-  }, _class.defaultProps = {
-    style: {},
-    source: {
-      uri: ''
-    },
-    showWebviewLoader: _reactNative.Platform.OS === 'android',
-    height: null
-  }, _temp2));
-
-  exports.default = SVGImage;
-},604,[112,131,12,295],"node_modules/react-native-svg-image/index.js");
-__d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
@@ -75539,7 +75391,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     };
 
     exports.default = (0, _reactRedux.connect)(mapAppStateToProps, mapDispatchToProps)(CoinScreen);
-},605,[112,131,12,606,609,616,617,628,629,494,618],"src/containers/CoinScreen.js");
+},604,[112,131,12,605,608,615,616,617,619,494,620],"src/containers/CoinScreen.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
@@ -75715,7 +75567,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     });
 
     exports.default = HeaderCoin;
-},606,[112,131,12,607,608],"src/components/Header.js");
+},605,[112,131,12,606,607],"src/components/Header.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
@@ -75852,7 +75704,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     });
 
     exports.default = SearchBar;
-},607,[112,131,12],"src/components/SearchBar.js");
+},606,[112,131,12],"src/components/SearchBar.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
   module.exports = _require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -75864,7 +75716,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     "name": "ic_search_white",
     "type": "png"
   });
-},608,[329],"src/images/ic_search_white.png");
+},607,[329],"src/images/ic_search_white.png");
 __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
@@ -76027,7 +75879,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     });
 
     exports.default = MarketCap;
-},609,[112,131,12,610],"src/components/MarketCap.js");
+},608,[112,131,12,609],"src/components/MarketCap.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
   var accounting = _require(_dependencyMap[0], 'accounting');
 
@@ -76132,7 +75984,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     format: format,
     unformat: unformat
   };
-},610,[611,114,612,614,615],"node_modules/currency-formatter/index.js");
+},609,[610,114,611,613,614],"node_modules/currency-formatter/index.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
 	(function (root, undefined) {
 		var lib = {};
@@ -76338,7 +76190,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 			root['accounting'] = lib;
 		}
 	})(this);
-},611,[],"node_modules/accounting/accounting.js");
+},610,[],"node_modules/accounting/accounting.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
     var map = _require(_dependencyMap[0], "./map");
 
@@ -76380,7 +76232,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
         return locales;
     };
-},612,[613],"node_modules/locale-currency/index.js");
+},611,[612],"node_modules/locale-currency/index.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
   var map = {
     AD: 'EUR',
@@ -76633,7 +76485,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     ZW: 'ZWL'
   };
   module.exports = map;
-},613,[],"node_modules/locale-currency/map.js");
+},612,[],"node_modules/locale-currency/map.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
   module.exports = {
     "AED": {
@@ -78095,7 +77947,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
       "decimalDigits": 2
     }
   };
-},614,[],"node_modules/currency-formatter/currencies.json");
+},613,[],"node_modules/currency-formatter/currencies.json");
 __d(function (global, _require, module, exports, _dependencyMap) {
   module.exports = {
     "de": {
@@ -78141,7 +77993,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
       "decimalDigits": 2
     }
   };
-},615,[],"node_modules/currency-formatter/localeFormats.json");
+},614,[],"node_modules/currency-formatter/localeFormats.json");
 __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
@@ -78353,7 +78205,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     });
 
     exports.default = ToggleTime;
-},616,[112,131,12],"src/components/ToggleTime.js");
+},615,[112,131,12],"src/components/ToggleTime.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
@@ -78602,7 +78454,413 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     });
 
     exports.default = SortBar;
-},617,[112,131,12],"src/components/SortBar.js");
+},616,[112,131,12],"src/components/SortBar.js");
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    var _react2 = _require(_dependencyMap[0], "react");
+
+    var _react3 = _interopRequireDefault(_react2);
+
+    var _index = _require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
+
+    var _index2 = _interopRequireDefault(_index);
+
+    var _jsxFileName = "/Users/ducnt/Documents/ICOC/src/components/CoinItem.js";
+
+    var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+    var _reactNative = _require(_dependencyMap[2], "react-native");
+
+    var _currencyFormatter = _require(_dependencyMap[3], "currency-formatter");
+
+    var _currencyFormatter2 = _interopRequireDefault(_currencyFormatter);
+
+    var _PercentChange = _require(_dependencyMap[4], "./PercentChange");
+
+    var _PercentChange2 = _interopRequireDefault(_PercentChange);
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+    function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+    function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+    var _components = {
+        CoinItem: {
+            displayName: "CoinItem"
+        }
+    };
+
+    var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+        filename: "/Users/ducnt/Documents/ICOC/src/components/CoinItem.js",
+        components: _components,
+        locals: [module],
+        imports: [_react3.default]
+    });
+
+    function _wrapComponent(id) {
+        return function (Component) {
+            return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+        };
+    }
+
+    var CoinItem = _wrapComponent("CoinItem")(function (_PureComponent) {
+        _inherits(CoinItem, _PureComponent);
+
+        function CoinItem() {
+            var _ref;
+
+            var _temp, _this, _ret;
+
+            _classCallCheck(this, CoinItem);
+
+            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+                args[_key] = arguments[_key];
+            }
+
+            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = CoinItem.__proto__ || Object.getPrototypeOf(CoinItem)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _temp), _possibleConstructorReturn(_this, _ret);
+        }
+
+        _createClass(CoinItem, [{
+            key: "render",
+            value: function render() {
+                return _react3.default.createElement(
+                    _reactNative.View,
+                    {
+                        style: styles.container,
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 15
+                        }
+                    },
+                    _react3.default.createElement(
+                        _reactNative.View,
+                        {
+                            style: {
+                                width: 30,
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                            },
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 16
+                            }
+                        },
+                        _react3.default.createElement(
+                            _reactNative.Text,
+                            {
+                                style: styles.text,
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 17
+                                }
+                            },
+                            this.props.coin.rank
+                        )
+                    ),
+                    _react3.default.createElement(
+                        _reactNative.View,
+                        {
+                            style: {
+                                flex: 1
+                            },
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 19
+                            }
+                        },
+                        _react3.default.createElement(
+                            _reactNative.Text,
+                            {
+                                style: [styles.text, {
+                                    paddingLeft: 10
+                                }],
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 20
+                                }
+                            },
+                            this.props.coin.name,
+                            " - ",
+                            this.props.coin.symbol
+                        )
+                    ),
+                    _react3.default.createElement(
+                        _reactNative.View,
+                        {
+                            style: {
+                                flex: 0.5
+                            },
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 22
+                            }
+                        },
+                        _react3.default.createElement(
+                            _reactNative.Text,
+                            {
+                                style: styles.text,
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 23
+                                }
+                            },
+                            _currencyFormatter2.default.format(this.props.coin.price_usd, {
+                                code: 'USD'
+                            })
+                        )
+                    ),
+                    _react3.default.createElement(
+                        _reactNative.View,
+                        {
+                            style: {
+                                flex: 0.4
+                            },
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 25
+                            }
+                        },
+                        _react3.default.createElement(_PercentChange2.default, {
+                            change: this.props.coin.percent_change_24h,
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 26
+                            }
+                        })
+                    )
+                );
+            }
+        }]);
+
+        return CoinItem;
+    }(_react2.PureComponent));
+
+    var styles = _reactNative.StyleSheet.create({
+        container: {
+            borderBottomColor: "#312F46",
+            borderBottomWidth: 2,
+            backgroundColor: "#242233",
+            paddingTop: 10,
+            paddingBottom: 10,
+            flexDirection: 'row',
+            flex: 1
+        },
+        text: {
+            color: "#ffffff",
+            fontSize: 14,
+            fontWeight: '500'
+        }
+    });
+
+    exports.default = CoinItem;
+},617,[112,131,12,609,618],"src/components/CoinItem.js");
+__d(function (global, _require, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _react2 = _require(_dependencyMap[0], "react");
+
+  var _react3 = _interopRequireDefault(_react2);
+
+  var _index = _require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
+
+  var _index2 = _interopRequireDefault(_index);
+
+  var _jsxFileName = "/Users/ducnt/Documents/ICOC/src/components/PercentChange.js";
+
+  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+  var _reactNative = _require(_dependencyMap[2], "react-native");
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+  var _components = {
+    PercentChange: {
+      displayName: "PercentChange"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: "/Users/ducnt/Documents/ICOC/src/components/PercentChange.js",
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var PercentChange = _wrapComponent("PercentChange")(function (_PureComponent) {
+    _inherits(PercentChange, _PureComponent);
+
+    function PercentChange() {
+      var _ref;
+
+      var _temp, _this, _ret;
+
+      _classCallCheck(this, PercentChange);
+
+      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = PercentChange.__proto__ || Object.getPrototypeOf(PercentChange)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _temp), _possibleConstructorReturn(_this, _ret);
+    }
+
+    _createClass(PercentChange, [{
+      key: "render",
+      value: function render() {
+        return _react3.default.createElement(
+          _reactNative.Text,
+          {
+            style: [styles.text, this.props.change >= 0 ? styles.up : styles.down],
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 13
+            }
+          },
+          this.props.change >= 0 && "+",
+          this.props.change,
+          "%"
+        );
+      }
+    }]);
+
+    return PercentChange;
+  }(_react2.PureComponent));
+
+  var styles = _reactNative.StyleSheet.create({
+    text: {
+      fontSize: 14,
+      fontWeight: '500'
+    },
+    up: {
+      color: "#63D39E"
+    },
+    down: {
+      color: "#fc2a19"
+    }
+  });
+
+  exports.default = PercentChange;
+},618,[112,131,12],"src/components/PercentChange.js");
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    var _react2 = _require(_dependencyMap[0], "react");
+
+    var _react3 = _interopRequireDefault(_react2);
+
+    var _index = _require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
+
+    var _index2 = _interopRequireDefault(_index);
+
+    var _jsxFileName = "/Users/ducnt/Documents/ICOC/src/components/CoinList.js";
+
+    var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+    var _reactNative = _require(_dependencyMap[2], "react-native");
+
+    var _CoinItem = _require(_dependencyMap[3], "./CoinItem");
+
+    var _CoinItem2 = _interopRequireDefault(_CoinItem);
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+    function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+    function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+    var _components = {
+        CoinList: {
+            displayName: "CoinList"
+        }
+    };
+
+    var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+        filename: "/Users/ducnt/Documents/ICOC/src/components/CoinList.js",
+        components: _components,
+        locals: [module],
+        imports: [_react3.default]
+    });
+
+    function _wrapComponent(id) {
+        return function (Component) {
+            return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+        };
+    }
+
+    var CoinList = _wrapComponent("CoinList")(function (_PureComponent) {
+        _inherits(CoinList, _PureComponent);
+
+        function CoinList() {
+            var _ref;
+
+            var _temp, _this, _ret;
+
+            _classCallCheck(this, CoinList);
+
+            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+                args[_key] = arguments[_key];
+            }
+
+            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = CoinList.__proto__ || Object.getPrototypeOf(CoinList)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _this._keyExtractor = function (item, index) {
+                return item.id;
+            }, _this._renderItem = function (_ref2) {
+                var item = _ref2.item;
+                return _react3.default.createElement(_CoinItem2.default, {
+                    coin: item,
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 17
+                    }
+                });
+            }, _temp), _possibleConstructorReturn(_this, _ret);
+        }
+
+        _createClass(CoinList, [{
+            key: "render",
+            value: function render() {
+                return _react3.default.createElement(_reactNative.FlatList, {
+                    style: {
+                        flex: 1
+                    },
+                    data: this.props.data,
+                    keyExtractor: this._keyExtractor,
+                    renderItem: this._renderItem,
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 22
+                    }
+                });
+            }
+        }]);
+
+        return CoinList;
+    }(_react2.PureComponent));
+
+    exports.default = CoinList;
+},619,[112,131,12,617],"src/components/CoinList.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
@@ -78976,26 +79234,25 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
                         case 10:
                             payload = _context6.sent;
-                            console.log(payload);
                             dispatch(finishedICOSuccessAction(payload));
-                            _context6.next = 19;
+                            _context6.next = 18;
                             break;
 
-                        case 15:
-                            _context6.prev = 15;
+                        case 14:
+                            _context6.prev = 14;
                             _context6.t0 = _context6["catch"](1);
                             console.log(_context6.t0);
                             dispatch(finishedICOErrorAction(_context6.t0));
 
-                        case 19:
+                        case 18:
                         case "end":
                             return _context6.stop();
                     }
                 }
-            }, null, _this, [[1, 15]]);
+            }, null, _this, [[1, 14]]);
         };
     };
-},618,[619],"src/actions/index.js");
+},620,[621],"src/actions/index.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -79020,7 +79277,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   var FINISHED_ICO_REQUEST_LOADING = exports.FINISHED_ICO_REQUEST_LOADING = "FINISHED_ICO_REQUEST_LOADING";
   var FINISHED_ICO_REQUEST_SUCCESS = exports.FINISHED_ICO_REQUEST_SUCCESS = "FINISHED_ICO_REQUEST_SUCCESS";
   var FINISHED_ICO_REQUEST_ERROR = exports.FINISHED_ICO_REQUEST_ERROR = "FINISHED_ICO_REQUEST_ERROR";
-},619,[],"src/actions/types.js");
+},621,[],"src/actions/types.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
@@ -79170,7 +79427,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     };
 
     exports.default = (0, _reactRedux.connect)(mapAppStateToProps, mapDispatchToProps)(ICOScreen);
-},620,[112,131,12,606,494,618],"src/containers/ICOScreen.js");
+},622,[112,131,12,605,494,620],"src/containers/ICOScreen.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
   module.exports = _require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -79182,7 +79439,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     "name": "ic_insert_chart_white_48pt",
     "type": "png"
   });
-},621,[329],"src/images/ic_insert_chart_white_48pt.png");
+},623,[329],"src/images/ic_insert_chart_white_48pt.png");
 __d(function (global, _require, module, exports, _dependencyMap) {
   module.exports = _require(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
     "__packager_asset": true,
@@ -79194,7 +79451,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     "name": "ic_alarm_white_48pt",
     "type": "png"
   });
-},622,[329],"src/images/ic_alarm_white_48pt.png");
+},624,[329],"src/images/ic_alarm_white_48pt.png");
 __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
@@ -79207,7 +79464,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         var action = arguments[1];
         return action.type === _types.CHANGE_SEGMENT_COIN_INDEX ? action.payload : state;
     };
-},623,[619],"src/reducers/SegmentCoinReducer.js");
+},625,[621],"src/reducers/SegmentCoinReducer.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
@@ -79220,7 +79477,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         var action = arguments[1];
         return action.type === _types.CHANGE_SEGMENT_ICO_INDEX ? action.payload : state;
     };
-},624,[619],"src/reducers/SegmentICOReducer.js");
+},626,[621],"src/reducers/SegmentICOReducer.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
@@ -79233,7 +79490,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         var action = arguments[1];
         return action.type === _types.MARKETCAP_REQUEST_SUCCESS ? action.payload : state;
     };
-},625,[619],"src/reducers/MarketCapReducer.js");
+},627,[621],"src/reducers/MarketCapReducer.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
     Object.defineProperty(exports, "__esModule", {
         value: true
@@ -79246,7 +79503,46 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         var action = arguments[1];
         return action.type === _types.COIN_REQUEST_SUCCESS ? action.payload : state;
     };
-},626,[619],"src/reducers/ListCoinReducer.js");
+},628,[621],"src/reducers/ListCoinReducer.js");
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    var _types = _require(_dependencyMap[0], "../actions/types");
+
+    exports.default = allCoinReducer = function allCoinReducer() {
+        var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+        var action = arguments[1];
+        return action.type === _types.ALL_COIN_REQUEST_SUCCESS ? action.payload : state;
+    };
+},629,[621],"src/reducers/AllCoinReducer.js");
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    var _types = _require(_dependencyMap[0], "../actions/types");
+
+    exports.default = liveICOReducer = function liveICOReducer() {
+        var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+        var action = arguments[1];
+        return action.type === _types.LIVE_ICO_REQUEST_SUCCESS ? action.payload : state;
+    };
+},630,[621],"src/reducers/LiveICOReducer.js");
+__d(function (global, _require, module, exports, _dependencyMap) {
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    var _types = _require(_dependencyMap[0], "../actions/types");
+
+    exports.default = finishedICOReducer = function finishedICOReducer() {
+        var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+        var action = arguments[1];
+        return action.type === _types.FINISHED_ICO_REQUEST_SUCCESS ? action.payload : state;
+    };
+},631,[621],"src/reducers/FinishedICOReducer.js");
 __d(function (global, _require, module, exports, _dependencyMap) {
   'use strict';
 
@@ -79271,451 +79567,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
   var thunk = createThunkMiddleware();
   thunk.withExtraArgument = createThunkMiddleware;
   exports['default'] = thunk;
-},627,[],"node_modules/redux-thunk/lib/index.js");
-__d(function (global, _require, module, exports, _dependencyMap) {
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-
-    var _react2 = _require(_dependencyMap[0], "react");
-
-    var _react3 = _interopRequireDefault(_react2);
-
-    var _index = _require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
-
-    var _index2 = _interopRequireDefault(_index);
-
-    var _jsxFileName = "/Users/ducnt/Documents/ICOC/src/components/CoinItem.js";
-
-    var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-    var _reactNative = _require(_dependencyMap[2], "react-native");
-
-    var _currencyFormatter = _require(_dependencyMap[3], "currency-formatter");
-
-    var _currencyFormatter2 = _interopRequireDefault(_currencyFormatter);
-
-    var _PercentChange = _require(_dependencyMap[4], "./PercentChange");
-
-    var _PercentChange2 = _interopRequireDefault(_PercentChange);
-
-    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-    function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-    function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-    var _components = {
-        CoinItem: {
-            displayName: "CoinItem"
-        }
-    };
-
-    var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
-        filename: "/Users/ducnt/Documents/ICOC/src/components/CoinItem.js",
-        components: _components,
-        locals: [module],
-        imports: [_react3.default]
-    });
-
-    function _wrapComponent(id) {
-        return function (Component) {
-            return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
-        };
-    }
-
-    var CoinItem = _wrapComponent("CoinItem")(function (_PureComponent) {
-        _inherits(CoinItem, _PureComponent);
-
-        function CoinItem() {
-            var _ref;
-
-            var _temp, _this, _ret;
-
-            _classCallCheck(this, CoinItem);
-
-            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-                args[_key] = arguments[_key];
-            }
-
-            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = CoinItem.__proto__ || Object.getPrototypeOf(CoinItem)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _temp), _possibleConstructorReturn(_this, _ret);
-        }
-
-        _createClass(CoinItem, [{
-            key: "render",
-            value: function render() {
-                return _react3.default.createElement(
-                    _reactNative.View,
-                    {
-                        style: styles.container,
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 15
-                        }
-                    },
-                    _react3.default.createElement(
-                        _reactNative.View,
-                        {
-                            style: {
-                                width: 30,
-                                alignItems: 'center',
-                                justifyContent: 'center'
-                            },
-                            __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 16
-                            }
-                        },
-                        _react3.default.createElement(
-                            _reactNative.Text,
-                            {
-                                style: styles.text,
-                                __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 17
-                                }
-                            },
-                            this.props.coin.rank
-                        )
-                    ),
-                    _react3.default.createElement(
-                        _reactNative.View,
-                        {
-                            style: {
-                                flex: 1
-                            },
-                            __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 19
-                            }
-                        },
-                        _react3.default.createElement(
-                            _reactNative.Text,
-                            {
-                                style: [styles.text, {
-                                    paddingLeft: 10
-                                }],
-                                __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 20
-                                }
-                            },
-                            this.props.coin.name,
-                            " - ",
-                            this.props.coin.symbol
-                        )
-                    ),
-                    _react3.default.createElement(
-                        _reactNative.View,
-                        {
-                            style: {
-                                flex: 0.5
-                            },
-                            __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 22
-                            }
-                        },
-                        _react3.default.createElement(
-                            _reactNative.Text,
-                            {
-                                style: styles.text,
-                                __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 23
-                                }
-                            },
-                            _currencyFormatter2.default.format(this.props.coin.price_usd, {
-                                code: 'USD'
-                            })
-                        )
-                    ),
-                    _react3.default.createElement(
-                        _reactNative.View,
-                        {
-                            style: {
-                                flex: 0.4
-                            },
-                            __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 25
-                            }
-                        },
-                        _react3.default.createElement(_PercentChange2.default, {
-                            change: this.props.coin.percent_change_24h,
-                            __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 26
-                            }
-                        })
-                    )
-                );
-            }
-        }]);
-
-        return CoinItem;
-    }(_react2.PureComponent));
-
-    var styles = _reactNative.StyleSheet.create({
-        container: {
-            borderBottomColor: "#312F46",
-            borderBottomWidth: 2,
-            backgroundColor: "#242233",
-            paddingTop: 10,
-            paddingBottom: 10,
-            flexDirection: 'row',
-            flex: 1
-        },
-        text: {
-            color: "#ffffff",
-            fontSize: 14,
-            fontWeight: '500'
-        }
-    });
-
-    exports.default = CoinItem;
-},628,[112,131,12,610,630],"src/components/CoinItem.js");
-__d(function (global, _require, module, exports, _dependencyMap) {
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-
-    var _react2 = _require(_dependencyMap[0], "react");
-
-    var _react3 = _interopRequireDefault(_react2);
-
-    var _index = _require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
-
-    var _index2 = _interopRequireDefault(_index);
-
-    var _jsxFileName = "/Users/ducnt/Documents/ICOC/src/components/CoinList.js";
-
-    var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-    var _reactNative = _require(_dependencyMap[2], "react-native");
-
-    var _CoinItem = _require(_dependencyMap[3], "./CoinItem");
-
-    var _CoinItem2 = _interopRequireDefault(_CoinItem);
-
-    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-    function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-    function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-    var _components = {
-        CoinList: {
-            displayName: "CoinList"
-        }
-    };
-
-    var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
-        filename: "/Users/ducnt/Documents/ICOC/src/components/CoinList.js",
-        components: _components,
-        locals: [module],
-        imports: [_react3.default]
-    });
-
-    function _wrapComponent(id) {
-        return function (Component) {
-            return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
-        };
-    }
-
-    var CoinList = _wrapComponent("CoinList")(function (_PureComponent) {
-        _inherits(CoinList, _PureComponent);
-
-        function CoinList() {
-            var _ref;
-
-            var _temp, _this, _ret;
-
-            _classCallCheck(this, CoinList);
-
-            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-                args[_key] = arguments[_key];
-            }
-
-            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = CoinList.__proto__ || Object.getPrototypeOf(CoinList)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _this._keyExtractor = function (item, index) {
-                return item.id;
-            }, _this._renderItem = function (_ref2) {
-                var item = _ref2.item;
-                return _react3.default.createElement(_CoinItem2.default, {
-                    coin: item,
-                    __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 17
-                    }
-                });
-            }, _temp), _possibleConstructorReturn(_this, _ret);
-        }
-
-        _createClass(CoinList, [{
-            key: "render",
-            value: function render() {
-                return _react3.default.createElement(_reactNative.FlatList, {
-                    style: {
-                        flex: 1
-                    },
-                    data: this.props.data,
-                    keyExtractor: this._keyExtractor,
-                    renderItem: this._renderItem,
-                    __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 22
-                    }
-                });
-            }
-        }]);
-
-        return CoinList;
-    }(_react2.PureComponent));
-
-    exports.default = CoinList;
-},629,[112,131,12,628],"src/components/CoinList.js");
-__d(function (global, _require, module, exports, _dependencyMap) {
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-
-  var _react2 = _require(_dependencyMap[0], "react");
-
-  var _react3 = _interopRequireDefault(_react2);
-
-  var _index = _require(_dependencyMap[1], "./../../node_modules/react-transform-hmr/lib/index.js");
-
-  var _index2 = _interopRequireDefault(_index);
-
-  var _jsxFileName = "/Users/ducnt/Documents/ICOC/src/components/PercentChange.js";
-
-  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-  var _reactNative = _require(_dependencyMap[2], "react-native");
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-  var _components = {
-    PercentChange: {
-      displayName: "PercentChange"
-    }
-  };
-
-  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
-    filename: "/Users/ducnt/Documents/ICOC/src/components/PercentChange.js",
-    components: _components,
-    locals: [module],
-    imports: [_react3.default]
-  });
-
-  function _wrapComponent(id) {
-    return function (Component) {
-      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
-    };
-  }
-
-  var PercentChange = _wrapComponent("PercentChange")(function (_PureComponent) {
-    _inherits(PercentChange, _PureComponent);
-
-    function PercentChange() {
-      var _ref;
-
-      var _temp, _this, _ret;
-
-      _classCallCheck(this, PercentChange);
-
-      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = PercentChange.__proto__ || Object.getPrototypeOf(PercentChange)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _temp), _possibleConstructorReturn(_this, _ret);
-    }
-
-    _createClass(PercentChange, [{
-      key: "render",
-      value: function render() {
-        return _react3.default.createElement(
-          _reactNative.Text,
-          {
-            style: [styles.text, this.props.change >= 0 ? styles.up : styles.down],
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 13
-            }
-          },
-          this.props.change >= 0 && "+",
-          this.props.change,
-          "%"
-        );
-      }
-    }]);
-
-    return PercentChange;
-  }(_react2.PureComponent));
-
-  var styles = _reactNative.StyleSheet.create({
-    text: {
-      fontSize: 14,
-      fontWeight: '500'
-    },
-    up: {
-      color: "#63D39E"
-    },
-    down: {
-      color: "#fc2a19"
-    }
-  });
-
-  exports.default = PercentChange;
-},630,[112,131,12],"src/components/PercentChange.js");
-__d(function (global, _require, module, exports, _dependencyMap) {
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-
-    var _types = _require(_dependencyMap[0], "../actions/types");
-
-    exports.default = allCoinReducer = function allCoinReducer() {
-        var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-        var action = arguments[1];
-        return action.type === _types.ALL_COIN_REQUEST_SUCCESS ? action.payload : state;
-    };
-},631,[619],"src/reducers/AllCoinReducer.js");
-__d(function (global, _require, module, exports, _dependencyMap) {
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-
-    var _types = _require(_dependencyMap[0], "../actions/types");
-
-    exports.default = liveICOReducer = function liveICOReducer() {
-        var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-        var action = arguments[1];
-        return action.type === _types.LIVE_ICO_REQUEST_SUCCESS ? action.payload : state;
-    };
-},632,[619],"src/reducers/LiveICOReducer.js");
-__d(function (global, _require, module, exports, _dependencyMap) {
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-
-    var _types = _require(_dependencyMap[0], "../actions/types");
-
-    exports.default = finishedICOReducer = function finishedICOReducer() {
-        var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-        var action = arguments[1];
-        return action.type === _types.FINISHED_ICO_REQUEST_SUCCESS ? action.payload : state;
-    };
-},633,[619],"src/reducers/FinishedICOReducer.js");
+},632,[],"node_modules/redux-thunk/lib/index.js");
 require(23);
 require(11);//# sourceMappingURL=index.map
