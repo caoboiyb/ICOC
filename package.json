@@ -12,6 +12,7 @@
     "babel-core": "^6.26.0",
     "currency-formatter": "^1.4.2",
     "electron": "^1.8.4",
+    "moment": "^2.21.0",
     "react": "16.3.0-alpha.3",
     "react-native": "0.54.2",
     "react-native-flex-image": "^1.1.0",

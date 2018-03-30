@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import FlexImage from 'react-native-flex-image';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import moment from 'moment'
 
 class ICOSection extends PureComponent {
     state = {}
@@ -30,7 +31,7 @@ class ICOSection extends PureComponent {
         return (
             <View>
                 <Text style={{ paddingBottom: 5 }}>
-                    <Icon name="clock-o" size={16} color="#63D39E" /> End in 7 hours
+                    <Icon name="clock-o" size={16} color="#ffcc00" /> End {moment(this.props.item.end_time).fromNow()}
                 </Text>
             </View>
         )
@@ -40,7 +41,7 @@ class ICOSection extends PureComponent {
         return (
             <View>
                 <Text style={{ paddingBottom: 5 }}>
-                    <Icon name="clock-o" size={16} color="#ffcc00" /> Start in 7 hours
+                    <Icon name="clock-o" size={16} color="#63D39E" /> Start {moment(this.props.item.start_time).fromNow()}
                 </Text>
             </View>
         )
