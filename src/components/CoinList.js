@@ -25,6 +25,7 @@ class CoinList extends PureComponent {
             <FlatList
                 style={{flex: 1}}
                 data={this.props.data}
+                extraData={this.props.extraData}
                 keyExtractor={this._keyExtractor}
                 renderItem={this._renderItem}
                 refreshing={this.props.refreshing}

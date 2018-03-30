@@ -75239,6 +75239,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+    function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
     function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
     function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -75313,15 +75315,13 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             }, _this._onSort = function (index) {
                 if (_this.state.sortColumn === index) {
                     _this.setState({
-                        sortColumn: -index,
-                        refreshing: true
+                        sortColumn: -index
                     }, function () {
-                        return _this.updateSortedData();
+                        return _this.updateSortedData(_this.state.data);
                     });
                 } else {
                     _this.setState({
-                        sortColumn: index,
-                        refreshing: true
+                        sortColumn: index
                     }, function () {
                         return _this.updateSortedData();
                     });
@@ -75351,6 +75351,9 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
                     case -4:
                         return _this.sortByPercentDES();
+
+                    default:
+                        return _this.sortByRankASC();
                 }
             }, _this.sortByRankASC = function () {
                 return _this.state.displayData.sort(function (a, b) {
@@ -75427,11 +75430,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             }, _this.updateSortedData = function () {
                 var sortedData = _this.sort(_this.state.sortColumn);
 
-                console.log(sortedData);
-
                 _this.setState({
-                    displayData: sortedData,
-                    refreshing: false
+                    displayData: [].concat(_toConsumableArray(sortedData))
                 });
             }, _temp), _possibleConstructorReturn(_this, _ret);
         }
@@ -75442,18 +75442,22 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         }, {
             key: "componentWillReceiveProps",
             value: function componentWillReceiveProps(nextProps) {
-                if (nextProps.listCoin !== this.state.data) {
-                    if (nextProps.segmentIndex === 0) {
-                        this.setState({
-                            data: nextProps.listCoin,
-                            displayData: nextProps.listCoin
-                        });
-                    } else if (nextProps.segmentIndex === 1) {
-                        this.setState({
-                            data: nextProps.allCoin,
-                            displayData: nextProps.allCoin
-                        });
-                    }
+                var _this2 = this;
+
+                if (nextProps.segmentIndex === 0) {
+                    this.setState({
+                        data: nextProps.listCoin,
+                        displayData: nextProps.listCoin
+                    }, function () {
+                        return _this2.updateSortedData();
+                    });
+                } else if (nextProps.segmentIndex === 1) {
+                    this.setState({
+                        data: nextProps.allCoin,
+                        displayData: nextProps.allCoin
+                    }, function () {
+                        return _this2.updateSortedData();
+                    });
                 }
             }
         }, {
@@ -75467,7 +75471,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         },
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 203
+                            lineNumber: 202
                         }
                     },
                     _react3.default.createElement(_Header2.default, {
@@ -75479,14 +75483,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         onSearch: this._onSearch,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 204
+                            lineNumber: 203
                         }
                     }),
                     _react3.default.createElement(_MarketCap2.default, {
                         marketCap: this.props.marketCap,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 212
+                            lineNumber: 211
                         }
                     }),
                     _react3.default.createElement(_ToggleTime2.default, {
@@ -75494,7 +75498,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         onChangeTimeIndex: this._onChangeTimeIndex,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 213
+                            lineNumber: 212
                         }
                     }),
                     _react3.default.createElement(_SortBar2.default, {
@@ -75502,7 +75506,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         onSort: this._onSort,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 217
+                            lineNumber: 216
                         }
                     }),
                     _react3.default.createElement(
@@ -75511,17 +75515,18 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             style: styles.content,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 221
+                                lineNumber: 220
                             }
                         },
                         _react3.default.createElement(_CoinList2.default, {
                             data: this.state.displayData,
+                            extraData: this.state.data,
                             selectedTime: this.state.changeTimeIndex,
                             onRefresh: this._onRefresh,
                             refreshing: this.state.refreshing,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 222
+                                lineNumber: 221
                             }
                         })
                     )
@@ -78535,7 +78540,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             _react3.default.createElement(
                                 _reactNative.Text,
                                 {
-                                    style: [styles.text, (this.props.sortedColumn === 3 || this.props.sortedColumn === -3) && styles.selectedText],
+                                    style: [styles.text, (this.props.sortedColumn === 3 || this.props.sortedColumn === -3) && styles.selectedText, {
+                                        paddingLeft: 40,
+                                        paddingRight: 20
+                                    }],
                                     __source: {
                                         fileName: _jsxFileName,
                                         lineNumber: 33
@@ -78552,7 +78560,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 }],
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 38
+                                    lineNumber: 39
                                 }
                             },
                             "/"
@@ -78565,16 +78573,19 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 },
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 39
+                                    lineNumber: 40
                                 }
                             },
                             _react3.default.createElement(
                                 _reactNative.Text,
                                 {
-                                    style: [styles.text, (this.props.sortedColumn === 4 || this.props.sortedColumn === -4) && styles.selectedText],
+                                    style: [styles.text, (this.props.sortedColumn === 4 || this.props.sortedColumn === -4) && styles.selectedText, {
+                                        paddingLeft: 20,
+                                        paddingRight: 40
+                                    }],
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 40
+                                        lineNumber: 41
                                     }
                                 },
                                 " % "
@@ -78600,8 +78611,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         text: {
             color: "#ffffff",
             fontSize: 14,
-            fontWeight: '500',
-            paddingHorizontal: 30
+            fontWeight: '500'
         },
         selectedText: {
             color: "#63D39E"
@@ -78804,7 +78814,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 }
                             },
                             _currencyFormatter2.default.format(this.props.coin.price_usd, {
-                                code: 'USD'
+                                code: 'USD',
+                                precision: 4
                             })
                         )
                     ),
@@ -79034,6 +79045,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         flex: 1
                     },
                     data: this.props.data,
+                    extraData: this.props.extraData,
                     keyExtractor: this._keyExtractor,
                     renderItem: this._renderItem,
                     refreshing: this.props.refreshing,

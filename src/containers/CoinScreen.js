@@ -35,21 +35,19 @@ class CoinScreen extends PureComponent {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.listCoin !== this.state.data) {
-            if (nextProps.segmentIndex === 0) {
-                this.setState({
-                    data: nextProps.listCoin,
-                    displayData: nextProps.listCoin
-                })
-            } else if (nextProps.segmentIndex === 1) {
-                this.setState({
-                    data: nextProps.allCoin,
-                    displayData: nextProps.allCoin
-                })
-            }
+
+        if (nextProps.segmentIndex === 0) {
+            this.setState({
+                data: nextProps.listCoin,
+                displayData: nextProps.listCoin
+            }, () => this.updateSortedData())
+        } else if (nextProps.segmentIndex === 1) {
+            this.setState({
+                data: nextProps.allCoin,
+                displayData: nextProps.allCoin
+            }, () => this.updateSortedData())
         }
     }
-
     _onCoinSegmentChange = index => {
         this.props.changeCoinSegmentIndex(index)
     }
@@ -73,7 +71,7 @@ class CoinScreen extends PureComponent {
     _onRefresh = () => {
         this.setState({
             refreshing: true
-        },() => {
+        }, () => {
             this.props.updateAllCoin()
             this.props.updateTopCoin()
             this.setState({
@@ -86,12 +84,12 @@ class CoinScreen extends PureComponent {
         if (this.state.sortColumn === index) {
             this.setState({
                 sortColumn: -index,
-                refreshing: true
-            }, () => this.updateSortedData())
+                // refreshing: true
+            }, () => this.updateSortedData(this.state.data))
         } else {
             this.setState({
                 sortColumn: index,
-                refreshing: true
+                // refreshing: true
             }, () => this.updateSortedData())
         }
     }
@@ -114,6 +112,8 @@ class CoinScreen extends PureComponent {
                 return this.sortByPercentASC()
             case -4:
                 return this.sortByPercentDES()
+            default:
+                return this.sortByRankASC()
         }
     }
 
@@ -191,10 +191,9 @@ class CoinScreen extends PureComponent {
 
     updateSortedData = () => {
         const sortedData = this.sort(this.state.sortColumn)
-        console.log(sortedData)
         this.setState({
-            displayData: sortedData,
-            refreshing: false
+            displayData: [...sortedData],
+            // refreshing: false
         })
     }
 
@@ -221,6 +220,7 @@ class CoinScreen extends PureComponent {
                 <View style={styles.content}>
                     <CoinList
                         data={this.state.displayData}
+                        extraData={this.state.data}
                         selectedTime={this.state.changeTimeIndex}
                         onRefresh={this._onRefresh}
                         refreshing={this.state.refreshing}

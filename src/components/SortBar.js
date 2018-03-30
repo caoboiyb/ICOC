@@ -32,14 +32,16 @@ class SortBar extends PureComponent {
                     <TouchableOpacity onPress={() => this.props.onSort(3)}>
                         <Text style={[
                             styles.text, 
-                            (this.props.sortedColumn === 3 || this.props.sortedColumn === -3) && styles.selectedText]
+                            (this.props.sortedColumn === 3 || this.props.sortedColumn === -3) && styles.selectedText,
+                            {paddingLeft: 40, paddingRight: 20}]
                         }>Price</Text>
                     </TouchableOpacity>
                     <Text style={[styles.text, { paddingHorizontal: 0 }]}>/</Text>
                     <TouchableOpacity onPress={() => this.props.onSort(4)}>
                         <Text style={[
                             styles.text, 
-                            (this.props.sortedColumn === 4 || this.props.sortedColumn === -4) && styles.selectedText]
+                            (this.props.sortedColumn === 4 || this.props.sortedColumn === -4) && styles.selectedText,
+                            {paddingLeft: 20, paddingRight: 40}]
                         }> % </Text>
                     </TouchableOpacity>
                 </View>
@@ -61,8 +63,7 @@ const styles = StyleSheet.create({
     text: {
         color: "#ffffff",
         fontSize: 14,
-        fontWeight: '500',
-        paddingHorizontal: 30
+        fontWeight: '500'
     },
     selectedText: {
         color: "#63D39E"

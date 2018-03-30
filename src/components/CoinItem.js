@@ -34,7 +34,7 @@ class CoinItem extends PureComponent {
                     <Text style={[styles.text, {paddingLeft: 10}]}>{this.props.coin.name} - {this.props.coin.symbol}</Text>
                 </View>
                 <View style={{ flex: 0.5 }}>
-                    <Text style={styles.text}>{currencyFormatter.format(this.props.coin.price_usd, { code: 'USD' })}</Text>
+                    <Text style={styles.text}>{currencyFormatter.format(this.props.coin.price_usd, { code: 'USD', precision: 4 })}</Text>
                 </View>
                 <View style={{ flex: 0.4 }}>
                     {this.renderPercentChange()}
