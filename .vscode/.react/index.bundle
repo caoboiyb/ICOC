@@ -75279,11 +75279,16 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             }
 
             return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = CoinScreen.__proto__ || Object.getPrototypeOf(CoinScreen)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-                displayData: []
+                displayData: [],
+                changeTimeIndex: 1
             }, _this._onCoinSegmentChange = function (index) {
                 _this.props.changeCoinSegmentIndex(index);
             }, _this._onSearch = function (text) {
                 console.log(text);
+            }, _this._onChangeTimeIndex = function (index) {
+                _this.setState({
+                    changeTimeIndex: index
+                });
             }, _temp), _possibleConstructorReturn(_this, _ret);
         }
 
@@ -75313,7 +75318,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         },
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 48
+                            lineNumber: 57
                         }
                     },
                     _react3.default.createElement(_Header2.default, {
@@ -75325,26 +75330,28 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         onSearch: this._onSearch,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 49
+                            lineNumber: 58
                         }
                     }),
                     _react3.default.createElement(_MarketCap2.default, {
                         marketCap: this.props.marketCap,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 57
+                            lineNumber: 66
                         }
                     }),
                     _react3.default.createElement(_ToggleTime2.default, {
+                        selectedTime: this.state.changeTimeIndex,
+                        onChangeTimeIndex: this._onChangeTimeIndex,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 58
+                            lineNumber: 67
                         }
                     }),
                     _react3.default.createElement(_SortBar2.default, {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 59
+                            lineNumber: 71
                         }
                     }),
                     _react3.default.createElement(
@@ -75353,14 +75360,15 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             style: styles.content,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 60
+                                lineNumber: 72
                             }
                         },
                         _react3.default.createElement(_CoinList2.default, {
                             data: this.state.displayData,
+                            selectedTime: this.state.changeTimeIndex,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 61
+                                lineNumber: 73
                             }
                         })
                     )
@@ -78059,9 +78067,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 args[_key] = arguments[_key];
             }
 
-            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ToggleTime.__proto__ || Object.getPrototypeOf(ToggleTime)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-                selectedTime: 1
-            }, _temp), _possibleConstructorReturn(_this, _ret);
+            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ToggleTime.__proto__ || Object.getPrototypeOf(ToggleTime)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _temp), _possibleConstructorReturn(_this, _ret);
         }
 
         _createClass(ToggleTime, [{
@@ -78091,9 +78097,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         _reactNative.TouchableOpacity,
                         {
                             onPress: function onPress() {
-                                return _this2.setState({
-                                    selectedTime: 0
-                                });
+                                return _this2.props.onChangeTimeIndex(0);
                             },
                             __source: {
                                 fileName: _jsxFileName,
@@ -78103,7 +78107,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         _react3.default.createElement(
                             _reactNative.Text,
                             {
-                                style: [styles.text, this.state.selectedTime === 0 && styles.selectedText],
+                                style: [styles.text, this.props.selectedTime === 0 && styles.selectedText],
                                 __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 17
@@ -78127,9 +78131,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         _reactNative.TouchableOpacity,
                         {
                             onPress: function onPress() {
-                                return _this2.setState({
-                                    selectedTime: 1
-                                });
+                                return _this2.props.onChangeTimeIndex(1);
                             },
                             __source: {
                                 fileName: _jsxFileName,
@@ -78139,7 +78141,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         _react3.default.createElement(
                             _reactNative.Text,
                             {
-                                style: [styles.text, this.state.selectedTime === 1 && styles.selectedText],
+                                style: [styles.text, this.props.selectedTime === 1 && styles.selectedText],
                                 __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 21
@@ -78163,9 +78165,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         _reactNative.TouchableOpacity,
                         {
                             onPress: function onPress() {
-                                return _this2.setState({
-                                    selectedTime: 2
-                                });
+                                return _this2.props.onChangeTimeIndex(2);
                             },
                             __source: {
                                 fileName: _jsxFileName,
@@ -78175,7 +78175,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         _react3.default.createElement(
                             _reactNative.Text,
                             {
-                                style: [styles.text, this.state.selectedTime === 2 && styles.selectedText],
+                                style: [styles.text, this.props.selectedTime === 2 && styles.selectedText],
                                 __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 25
@@ -78528,7 +78528,45 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 args[_key] = arguments[_key];
             }
 
-            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = CoinItem.__proto__ || Object.getPrototypeOf(CoinItem)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _temp), _possibleConstructorReturn(_this, _ret);
+            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = CoinItem.__proto__ || Object.getPrototypeOf(CoinItem)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _this.renderPercentChange = function () {
+                switch (_this.props.selectedTime) {
+                    case 0:
+                        return _react3.default.createElement(_PercentChange2.default, {
+                            change: _this.props.coin.percent_change_1h,
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 17
+                            }
+                        });
+
+                    case 1:
+                        return _react3.default.createElement(_PercentChange2.default, {
+                            change: _this.props.coin.percent_change_24h,
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 19
+                            }
+                        });
+
+                    case 2:
+                        return _react3.default.createElement(_PercentChange2.default, {
+                            change: _this.props.coin.percent_change_7d,
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 21
+                            }
+                        });
+
+                    default:
+                        return _react3.default.createElement(_PercentChange2.default, {
+                            change: _this.props.coin.percent_change_24h,
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 23
+                            }
+                        });
+                }
+            }, _temp), _possibleConstructorReturn(_this, _ret);
         }
 
         _createClass(CoinItem, [{
@@ -78540,7 +78578,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         style: styles.container,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 15
+                            lineNumber: 29
                         }
                     },
                     _react3.default.createElement(
@@ -78553,7 +78591,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 16
+                                lineNumber: 30
                             }
                         },
                         _react3.default.createElement(
@@ -78562,7 +78600,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 style: styles.text,
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 17
+                                    lineNumber: 31
                                 }
                             },
                             this.props.coin.rank
@@ -78576,7 +78614,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 19
+                                lineNumber: 33
                             }
                         },
                         _react3.default.createElement(
@@ -78587,7 +78625,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 }],
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 20
+                                    lineNumber: 34
                                 }
                             },
                             this.props.coin.name,
@@ -78603,7 +78641,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 22
+                                lineNumber: 36
                             }
                         },
                         _react3.default.createElement(
@@ -78612,7 +78650,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                                 style: styles.text,
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 23
+                                    lineNumber: 37
                                 }
                             },
                             _currencyFormatter2.default.format(this.props.coin.price_usd, {
@@ -78628,16 +78666,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 25
+                                lineNumber: 39
                             }
                         },
-                        _react3.default.createElement(_PercentChange2.default, {
-                            change: this.props.coin.percent_change_24h,
-                            __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 26
-                            }
-                        })
+                        this.renderPercentChange()
                     )
                 );
             }
@@ -78835,6 +78867,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 var item = _ref2.item;
                 return _react3.default.createElement(_CoinItem2.default, {
                     coin: item,
+                    selectedTime: _this.props.selectedTime,
                     __source: {
                         fileName: _jsxFileName,
                         lineNumber: 17
@@ -78855,7 +78888,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     renderItem: this._renderItem,
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 22
+                        lineNumber: 25
                     }
                 });
             }

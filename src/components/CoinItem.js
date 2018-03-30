@@ -10,6 +10,20 @@ import PercentChange from './PercentChange'
 
 class CoinItem extends PureComponent {
     state = {}
+
+    renderPercentChange = () => {
+        switch (this.props.selectedTime) {
+            case 0:
+                return (<PercentChange change={this.props.coin.percent_change_1h} />)
+            case 1:
+                return (<PercentChange change={this.props.coin.percent_change_24h} />)
+            case 2:
+                return (<PercentChange change={this.props.coin.percent_change_7d} />)
+            default:
+                return (<PercentChange change={this.props.coin.percent_change_24h} />)
+        }
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -23,7 +37,7 @@ class CoinItem extends PureComponent {
                     <Text style={styles.text}>{currencyFormatter.format(this.props.coin.price_usd, { code: 'USD' })}</Text>
                 </View>
                 <View style={{ flex: 0.4 }}>
-                    <PercentChange change={this.props.coin.percent_change_24h} />
+                    {this.renderPercentChange()}
                 </View>
             </View>
         );

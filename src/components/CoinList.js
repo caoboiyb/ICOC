@@ -14,7 +14,10 @@ class CoinList extends PureComponent {
     _keyExtractor = (item, index) => item.id
 
     _renderItem = ({ item }) => (
-        <CoinItem coin={item}/>
+        <CoinItem 
+            coin={item}
+            selectedTime={this.props.selectedTime}
+        />
     );
 
     render() {

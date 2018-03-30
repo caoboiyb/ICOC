@@ -19,7 +19,10 @@ import { createChangeSegmentCoinAction, marketcapRequestAction } from '../action
 
 
 class CoinScreen extends PureComponent {
-    state = { displayData: [] }
+    state = { 
+        displayData: [],
+        changeTimeIndex: 1 
+    }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.listCoin.length !== 0) {
@@ -43,6 +46,12 @@ class CoinScreen extends PureComponent {
         console.log(text)
     }
 
+    _onChangeTimeIndex = index => {
+        this.setState({
+            changeTimeIndex: index
+        })
+    }
+
     render() {
         return (
             <View style={{ flex: 1 }}>
@@ -55,10 +64,16 @@ class CoinScreen extends PureComponent {
                     onSearch={this._onSearch}
                 />
                 <MarketCap marketCap={this.props.marketCap} />
-                <ToggleTime />
+                <ToggleTime 
+                    selectedTime={this.state.changeTimeIndex}
+                    onChangeTimeIndex={this._onChangeTimeIndex}    
+                />
                 <SortBar />
                 <View style={styles.content}>
-                    <CoinList data={this.state.displayData} />
+                    <CoinList 
+                        data={this.state.displayData}
+                        selectedTime={this.state.changeTimeIndex}
+                    />
                 </View>
             </View>
         );
